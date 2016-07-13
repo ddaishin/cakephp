@@ -52,7 +52,6 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 
 	fi
 
-
 	TERM=dumb php -- "$CAKEPHP_DB_HOST" "$CAKEPHP_DB_USER" "$CAKEPHP_DB_PASSWORD" "$CAKEPHP_DB_NAME" <<'EOPHP'
 <?php
 // database might not exist, so let's try creating it (just to be safe)
