@@ -42,12 +42,12 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 			( set -x; ls -A; sleep 10 )
 		fi
 
-		if [ ! -d /usr/src/cakephp-master ]; then
-			curl -SL https://github.com/cakephp/cakephp/archive/${CAKEPHP_VERSION:=master}.tar.gz | tar -xz -C /usr/src/ \
-			&& chown -R www-data:www-data /usr/src/cakephp-master
+		if [ ! -d /usr/src/cakephp ]; then
+			curl -SL https://github.com/cakephp/cakephp/archive/${CAKEPHP_VERSION:=master}.tar.gz | tar -xz -C /usr/src/cakephp --strip-components 1 \
+			&& chown -R www-data:www-data /usr/src/cakephp
 		fi
 
-		tar cf - --one-file-system -C /usr/src/cakephp-master . | tar xf -
+		tar cf - --one-file-system -C /usr/src/cakephp . | tar xf -
 		echo >&2 "Complete! CakePHP has been successfully copied to $(pwd)"
 
 	fi
