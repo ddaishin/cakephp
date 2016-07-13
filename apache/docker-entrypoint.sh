@@ -43,7 +43,7 @@ if [[ "$1" == apache2* ]] || [ "$1" == php-fpm ]; then
 		fi
 
 		if [ ! -d /usr/src/cakephp ]; then
-			curl -SL https://github.com/cakephp/cakephp/archive/${CAKEPHP_VERSION:=master}.tar.gz | tar -xz -C /usr/src/cakephp --strip-components 1 \
+			mkdir /usr/src/cakephp | curl -SL https://github.com/cakephp/cakephp/archive/${CAKEPHP_VERSION:=master}.tar.gz | tar -xz -C /usr/src/cakephp --strip-components 1 \
 			&& chown -R www-data:www-data /usr/src/cakephp
 		fi
 
